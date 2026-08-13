@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard – Stackly Electronics Marketplace</title>
+  <meta name="description" content="Your Stackly account dashboard — manage your profile, orders, wishlist and saved addresses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- ==================== TOP BAR ==================== -->
+  <div class="dash-topbar">
+    <div class="dash-topbar-inner">
+      <a href="404.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+      <div class="dash-user">
+        <span class="dash-user-avatar">P</span>
+        <div><b>Priya Patel</b><small>User · ID: USR-2031</small></div>
+      </div>
+      <button class="dash-menu-btn" id="dashMenuBtn" aria-label="Menu"><i class="fas fa-ellipsis-vertical"></i></button>
+    </div>
+  </div>
+
+  <!-- ==================== DASHBOARD ==================== -->
+  <div class="dash">
+    <div class="dash-container">
+
+      <aside class="dash-side" id="dashSide">
+        <div class="dash-side-head">
+          <button class="dash-side-close" id="dashSideClose" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="dash-side-inner">
+          <div class="dash-profile">
+            <div class="dash-avatar">P</div>
+            <h3>Priya Patel</h3>
+            <p>User</p>
+          </div>
+          <nav class="dash-nav">
+            <a href="#panel-overview" class="active" data-panel="overview"><i class="fas fa-gauge-high"></i> My Dashboard</a>
+            <a href="#panel-profile" data-panel="profile"><i class="fas fa-user"></i> My Profile</a>
+            <a href="#panel-orders" data-panel="orders"><i class="fas fa-receipt"></i> My Orders</a>
+            <a href="#panel-wishlist" data-panel="wishlist"><i class="far fa-heart"></i> Wishlist</a>
+            <a href="#panel-addresses" data-panel="addresses"><i class="fas fa-location-dot"></i> Addresses</a>
+            <a href="#panel-settings" data-panel="settings"><i class="fas fa-gear"></i> Settings</a>
+            <a href="login.html" class="logout"><i class="fas fa-right-from-bracket"></i> Logout</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="dash-main">
+        <div class="dash-top">
+          <div>
+            <h2>Hello, Priya! 👋</h2>
+            <p>Here's what's happening with your account.</p>
+          </div>
+          <div class="dash-top-actions">
+            <a href="404.html" class="dash-btn dash-btn-primary"><i class="fas fa-bag-shopping"></i> View Store</a>
+          </div>
+        </div>
+
+        <!-- ==================== OVERVIEW ==================== -->
+        <section class="dash-panel active" id="panel-overview">
+          <div class="dash-stats">
+            <div class="dash-stat">
+              <i class="fas fa-receipt"></i>
+              <div><b id="statOrders">0</b><span>Total Orders</span></div>
+            </div>
+            <div class="dash-stat blue">
+              <i class="far fa-heart"></i>
+              <div><b id="statWishlist">0</b><span>Wishlist Items</span></div>
+            </div>
+            <div class="dash-stat green">
+              <i class="fas fa-shopping-cart"></i>
+              <div><b id="statCart">0</b><span>Cart Items</span></div>
+            </div>
+            <div class="dash-stat purple">
+              <i class="fas fa-tags"></i>
+              <div><b>2</b><span>Active Coupons</span></div>
+            </div>
+          </div>
+
+          <div class="dash-panel-head">
+            <h3>Recent Orders</h3>
+            <a href="404.html">View All</a>
+          </div>
+          <div id="userRecentOrders"></div>
+        </section>
+
+        <!-- ==================== PROFILE ==================== -->
+        <section class="dash-panel" id="panel-profile">
+          <div class="dash-panel-head">
+            <h3>My Profile</h3>
+          </div>
+          <form id="profileForm">
+            <div class="dash-form-row">
+              <div class="form-group">
+                <label for="proFirst">First Name</label>
+                <input type="text" id="proFirst" value="Priya" required maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters, no numbers" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
+              </div>
+              <div class="form-group">
+                <label for="proLast">Last Name</label>
+                <input type="text" id="proLast" value="Patel" required maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters, no numbers" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
+              </div>
+            </div>
+            <div class="dash-form-row">
+              <div class="form-group">
+                <label for="proEmail">Email Address</label>
+                <input type="email" id="proEmail" value="priya.p@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="proPhone">Phone Number</label>
+                <input type="tel" id="proPhone" value="9876543210" required pattern="[0-9]{10}" minlength="10" maxlength="10" title="Enter a 10-digit phone number" oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)">
+              </div>
+            </div>
+            <button type="submit" class="dash-btn dash-btn-primary"><i class="fas fa-save"></i> Save Profile</button>
+          </form>
+        </section>
+
+        <!-- ==================== ORDERS ==================== -->
+        <section class="dash-panel" id="panel-orders">
+          <div class="dash-panel-head">
+            <h3>My Orders</h3>
+          </div>
+          <div id="userOrdersList"></div>
+        </section>
+
+        <!-- ==================== WISHLIST ==================== -->
+        <section class="dash-panel" id="panel-wishlist">
+          <div class="dash-panel-head">
+            <h3>My Wishlist</h3>
+            <a href="404.html">Open Wishlist Page</a>
+          </div>
+          <div class="wish-grid" id="wishGrid"></div>
+          <p class="dash-empty" id="wishEmpty" style="display:none;">Your wishlist is empty. <a href="404.html" style="color:var(--primary); font-weight:600;">Browse products</a></p>
+        </section>
+
+        <!-- ==================== ADDRESSES ==================== -->
+        <section class="dash-panel" id="panel-addresses">
+          <div class="dash-panel-head">
+            <h3>Saved Addresses</h3>
+          </div>
+          <div class="addr-grid" id="addrGrid"></div>
+
+          <h3 style="font-size:17px; margin-bottom:14px;">Add New Address</h3>
+          <form id="addrForm">
+            <div class="dash-form-row">
+              <div class="form-group">
+                <label for="addrName">Full Name</label>
+                <input type="text" id="addrName" placeholder="Full name" required>
+              </div>
+              <div class="form-group">
+                <label for="addrPhone">Phone</label>
+                <input type="tel" id="addrPhone" placeholder="10-digit mobile" required pattern="[0-9]{10}" maxlength="10" oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)">
+              </div>
+            </div>
+            <div class="dash-form-row">
+              <div class="form-group">
+                <label for="addrStreet">Street Address</label>
+                <input type="text" id="addrStreet" placeholder="House no, street, area" required>
+              </div>
+              <div class="form-group">
+                <label for="addrCity">City</label>
+                <input type="text" id="addrCity" placeholder="City" required>
+              </div>
+            </div>
+            <div class="dash-form-row">
+              <div class="form-group">
+                <label for="addrState">State</label>
+                <input type="text" id="addrState" placeholder="State" required>
+              </div>
+              <div class="form-group">
+                <label for="addrPin">PIN Code</label>
+                <input type="text" id="addrPin" placeholder="6-digit PIN" required pattern="[0-9]{6}" maxlength="6" oninput="this.value=this.value.replace(/\D/g,'').slice(0,6)">
+              </div>
+            </div>
+            <button type="submit" class="dash-btn dash-btn-primary"><i class="fas fa-plus"></i> Add Address</button>
+          </form>
+        </section>
+
+        <!-- ==================== SETTINGS ==================== -->
+        <section class="dash-panel" id="panel-settings">
+          <div class="dash-panel-head">
+            <h3>Account Settings</h3>
+          </div>
+          <form id="userSettingsForm">
+            <div class="dash-form-row full">
+              <div class="form-group">
+                <label for="setPassword">New Password</label>
+                <input type="password" id="setPassword" placeholder="Leave blank to keep current" minlength="6">
+              </div>
+            </div>
+            <div class="dash-form-row full">
+              <div class="form-group">
+                <label for="setNotif"><i class="fas fa-envelope" style="color:var(--primary); margin-right:6px;"></i>Email Notifications</label>
+                <select id="setNotif">
+                  <option value="all" selected>All updates</option>
+                  <option value="orders">Order updates only</option>
+                  <option value="none">None</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="dash-btn dash-btn-primary"><i class="fas fa-save"></i> Save Settings</button>
+          </form>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <div class="dash-overlay" id="dashOverlay"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    /* ================== PANEL SWITCHING ================== */
+    const navLinks = document.querySelectorAll(".dash-nav a[data-panel]");
+    const panels = document.querySelectorAll(".dash-panel");
+
+    function switchPanel(name) {
+      panels.forEach((p) => p.classList.toggle("active", p.id === "panel-" + name));
+      navLinks.forEach((a) => a.classList.toggle("active", a.dataset.panel === name));
+      if (name === "wishlist") renderWishlist();
+      if (name === "addresses") renderAddresses();
+    }
+
+    navLinks.forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        switchPanel(a.dataset.panel);
+        closeSidebar();
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      const go = e.target.closest(".dash-go");
+      if (go) {
+        e.preventDefault();
+        switchPanel(go.dataset.panel);
+      }
+    });
+
+    /* ================== MOBILE SIDEBAR ================== */
+    const dashSide = document.getElementById("dashSide");
+    const dashOverlay = document.getElementById("dashOverlay");
+
+    function openSidebar() { dashSide.classList.add("open"); dashOverlay.classList.add("show"); }
+    function closeSidebar() { dashSide.classList.remove("open"); dashOverlay.classList.remove("show"); }
+
+    const dashMenuBtn = document.getElementById("dashMenuBtn");
+    if (dashMenuBtn) dashMenuBtn.addEventListener("click", openSidebar);
+    const dashSideClose = document.getElementById("dashSideClose");
+    if (dashSideClose) dashSideClose.addEventListener("click", closeSidebar);
+    dashOverlay.addEventListener("click", closeSidebar);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSidebar(); });
+
+    /* ================== HELPERS ================== */
+    const fmt = window.StacklyProducts ? StacklyProducts.formatPrice : (n) => "₹" + Number(n).toLocaleString("en-IN");
+
+    function showToast(msg, icon) {
+      const old = document.querySelector(".dash-toast");
+      if (old) old.remove();
+      const t = document.createElement("div");
+      t.className = "dash-toast";
+      t.innerHTML = `<i class="fas fa-${icon}"></i> ${msg}`;
+      document.body.appendChild(t);
+      setTimeout(() => t.classList.add("show"), 10);
+      setTimeout(() => { t.classList.remove("show"); setTimeout(() => t.remove(), 300); }, 2400);
+    }
+
+    /* ================== OVERVIEW STATS ================== */
+    const wishIds = window.StacklyWishlist ? StacklyWishlist.getWishlist() : [];
+    const cartItems = window.StacklyCart ? StacklyCart.getCart() : [];
+
+    document.getElementById("statOrders").textContent = 5;
+    document.getElementById("statWishlist").textContent = wishIds.length;
+    document.getElementById("statCart").textContent = cartItems.reduce((s, i) => s + (i.qty || 1), 0);
+
+    /* ================== RECENT ORDERS (user) ================== */
+    const userOrders = [
+      { id: "ORD-1042", date: "12 Aug 2026", total: 88497, items: 3, status: "Delivered", cls: "pill-success", icon: "fa-box" },
+      { id: "ORD-1035", date: "28 Jul 2026", total: 2999, items: 1, status: "Delivered", cls: "pill-success", icon: "fa-box" },
+      { id: "ORD-1021", date: "14 Jul 2026", total: 7499, items: 1, status: "Delivered", cls: "pill-success", icon: "fa-box" },
+      { id: "ORD-1008", date: "30 Jun 2026", total: 32999, items: 1, status: "Delivered", cls: "pill-success", icon: "fa-box" },
+      { id: "ORD-0992", date: "12 Jun 2026", total: 6499, items: 1, status: "Delivered", cls: "pill-success", icon: "fa-box" },
+    ];
+
+    const orderItemHTML = (o) => `
+      <div class="order-item">
+        <div class="oi-info">
+          <i class="fas ${o.icon}"></i>
+          <div>
+            <b>${o.id}</b>
+            <small>${o.date} · ${o.items} item${o.items > 1 ? "s" : ""}</small>
+          </div>
+        </div>
+        <div class="oi-right">
+          <span class="pill ${o.cls}">${o.status}</span>
+          <b>${fmt(o.total)}</b>
+        </div>
+      </div>`;
+
+    document.getElementById("userRecentOrders").innerHTML = userOrders.slice(0, 3).map(orderItemHTML).join("") +
+      '<div style="margin-top:14px;"><a href="#panel-orders" data-panel="orders" class="dash-go" style="color:var(--primary); font-weight:600; font-size:13px; text-decoration:none;">View all 5 orders →</a></div>';
+
+    document.getElementById("userOrdersList").innerHTML = userOrders.map(orderItemHTML).join("");
+
+    /* ================== PROFILE ================== */
+    const savedProfile = JSON.parse(localStorage.getItem("stacklyProfile") || "null");
+    if (savedProfile) {
+      document.getElementById("proFirst").value = savedProfile.first || "Priya";
+      document.getElementById("proLast").value = savedProfile.last || "Patel";
+      document.getElementById("proEmail").value = savedProfile.email || "priya.p@example.com";
+      document.getElementById("proPhone").value = savedProfile.phone || "9876543210";
+    }
+
+    document.getElementById("profileForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const profile = {
+        first: document.getElementById("proFirst").value,
+        last: document.getElementById("proLast").value,
+        email: document.getElementById("proEmail").value,
+        phone: document.getElementById("proPhone").value,
+      };
+      localStorage.setItem("stacklyProfile", JSON.stringify(profile));
+      showToast("Profile saved", "check");
+    });
+
+    /* ================== WISHLIST ================== */
+    function renderWishlist() {
+      const grid = document.getElementById("wishGrid");
+      const empty = document.getElementById("wishEmpty");
+      const ids = window.StacklyWishlist ? StacklyWishlist.getWishlist() : [];
+      const list = ids.map(Number).map((id) => window.StacklyProducts && StacklyProducts.getProductById(id)).filter(Boolean);
+
+      grid.innerHTML = list.map((p) => `
+        <div class="wish-card">
+          <img src="${p.image}" alt="${p.name}">
+          <div style="min-width:0;">
+            <b>${p.name}</b>
+            <small>${p.category}</small>
+            <div class="wish-price">${fmt(p.price)}</div>
+          </div>
+          <div class="wish-actions">
+            <a href="404.html">View</a>
+            <button class="wish-remove" data-id="${p.id}"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>`).join("");
+
+      empty.style.display = list.length ? "none" : "block";
+      grid.style.display = list.length ? "grid" : "none";
+
+      grid.querySelectorAll(".wish-remove").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (window.StacklyWishlist) StacklyWishlist.toggleWishlist(Number(btn.dataset.id));
+          document.getElementById("statWishlist").textContent = (window.StacklyWishlist ? StacklyWishlist.getWishlist() : []).length;
+          renderWishlist();
+          showToast("Removed from wishlist", "heart-crack");
+        });
+      });
+    }
+
+    /* ================== ADDRESSES ================== */
+    const ADDR_KEY = "stacklyAddresses";
+
+    const defaultAddresses = [
+      { id: 1, name: "Priya Patel", phone: "9876543210", street: "42, MG Road, Shivaji Nagar", city: "Pune", state: "Maharashtra", pin: "411005", def: true },
+      { id: 2, name: "Priya Patel", phone: "9876543210", street: "7B, Lake View Apartments", city: "Mumbai", state: "Maharashtra", pin: "400050", def: false },
+    ];
+
+    function getAddresses() {
+      return JSON.parse(localStorage.getItem(ADDR_KEY) || "null") || defaultAddresses;
+    }
+
+    function saveAddresses(list) {
+      localStorage.setItem(ADDR_KEY, JSON.stringify(list));
+    }
+
+    function renderAddresses() {
+      const grid = document.getElementById("addrGrid");
+      const list = getAddresses();
+      grid.innerHTML = list.map((a) => `
+        <div class="addr-card">
+          ${a.def ? '<span class="default-tag">Default</span>' : ""}
+          <h4>${a.name}</h4>
+          <p>${a.street}</p>
+          <p>${a.city}, ${a.state} - ${a.pin}</p>
+          <small>${a.phone}</small>
+          <div class="addr-actions">
+            ${a.def ? "" : `<button class="addr-default" data-id="${a.id}">Set as Default</button>`}
+            <button class="addr-delete" data-id="${a.id}">Delete</button>
+          </div>
+        </div>`).join("");
+
+      grid.querySelectorAll(".addr-delete").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const updated = getAddresses().filter((a) => a.id !== Number(btn.dataset.id));
+          saveAddresses(updated);
+          renderAddresses();
+          showToast("Address deleted", "trash");
+        });
+      });
+
+      grid.querySelectorAll(".addr-default").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const updated = getAddresses().map((a) => ({ ...a, def: a.id === Number(btn.dataset.id) }));
+          saveAddresses(updated);
+          renderAddresses();
+          showToast("Default address updated", "check");
+        });
+      });
+    }
+
+    document.getElementById("addrForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const list = getAddresses();
+      list.push({
+        id: Date.now(),
+        name: document.getElementById("addrName").value,
+        phone: document.getElementById("addrPhone").value,
+        street: document.getElementById("addrStreet").value,
+        city: document.getElementById("addrCity").value,
+        state: document.getElementById("addrState").value,
+        pin: document.getElementById("addrPin").value,
+        def: list.length === 0,
+      });
+      saveAddresses(list);
+      e.target.reset();
+      renderAddresses();
+      showToast("Address added", "check");
+    });
+
+    /* ================== SETTINGS ================== */
+    document.getElementById("userSettingsForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const pw = document.getElementById("setPassword").value;
+      const notif = document.getElementById("setNotif").value;
+      localStorage.setItem("stacklyUserSettings", JSON.stringify({ notif }));
+      if (pw) { localStorage.setItem("stacklyPassword", pw); document.getElementById("setPassword").value = ""; }
+      showToast("Settings saved", "check");
+    });
+  </script>
+</body>
+</html>

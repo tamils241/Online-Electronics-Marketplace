@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard – Stackly Electronics Marketplace</title>
+  <meta name="description" content="Admin dashboard for the Stackly electronics marketplace — manage products, orders, customers and reports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- ==================== TOP BAR ==================== -->
+  <div class="dash-topbar">
+    <div class="dash-topbar-inner">
+      <a href="404.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+      <div class="dash-user">
+        <span class="dash-user-avatar">A</span>
+        <div><b>Store Admin</b><small>Admin · ID: ADM-0001</small></div>
+      </div>
+      <button class="dash-menu-btn" id="dashMenuBtn" aria-label="Menu"><i class="fas fa-ellipsis-vertical"></i></button>
+    </div>
+  </div>
+
+  <!-- ==================== DASHBOARD ==================== -->
+  <div class="dash">
+    <div class="dash-container">
+
+      <aside class="dash-side" id="dashSide">
+        <div class="dash-side-head">
+          <button class="dash-side-close" id="dashSideClose" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="dash-side-inner">
+          <div class="dash-profile">
+            <div class="dash-avatar">A</div>
+            <h3>Store Admin</h3>
+            <p>Administrator</p>
+          </div>
+          <nav class="dash-nav">
+            <a href="#panel-overview" class="active" data-panel="overview"><i class="fas fa-gauge-high"></i> Dashboard</a>
+            <a href="#panel-products" data-panel="products"><i class="fas fa-box-open"></i> Products</a>
+            <a href="#panel-orders" data-panel="orders"><i class="fas fa-receipt"></i> Orders</a>
+            <a href="#panel-customers" data-panel="customers"><i class="fas fa-users"></i> Customers</a>
+            <a href="#panel-reports" data-panel="reports"><i class="fas fa-chart-line"></i> Reports</a>
+            <a href="#panel-settings" data-panel="settings"><i class="fas fa-gear"></i> Settings</a>
+            <a href="login.html" class="logout"><i class="fas fa-right-from-bracket"></i> Logout</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="dash-main">
+        <div class="dash-top">
+          <div>
+            <h2>Admin Dashboard</h2>
+            <p>Overview of your store performance.</p>
+          </div>
+          <div class="dash-top-actions">
+            <a href="404.html" class="dash-btn dash-btn-primary"><i class="fas fa-plus"></i> Add Product</a>
+          </div>
+        </div>
+
+        <!-- ==================== OVERVIEW ==================== -->
+        <section class="dash-panel active" id="panel-overview">
+          <div class="dash-stats">
+            <div class="dash-stat">
+              <i class="fas fa-indian-rupee-sign"></i>
+              <div><b id="statRevenue">₹0</b><span>Total Revenue</span></div>
+            </div>
+            <div class="dash-stat blue">
+              <i class="fas fa-receipt"></i>
+              <div><b id="statOrders">0</b><span>Orders</span></div>
+            </div>
+            <div class="dash-stat green">
+              <i class="fas fa-box-open"></i>
+              <div><b id="statProducts">0</b><span>Products</span></div>
+            </div>
+            <div class="dash-stat purple">
+              <i class="fas fa-users"></i>
+              <div><b id="statCustomers">0</b><span>Customers</span></div>
+            </div>
+          </div>
+
+          <div class="dash-panel-head">
+            <h3>Sales Overview <small style="font-weight:400; color:var(--gray);">last 6 months</small></h3>
+          </div>
+          <div class="dash-bars" id="salesBars"></div>
+
+          <div class="dash-panel-head" style="margin-top:26px;">
+            <h3>Recent Orders</h3>
+            <a href="404.html">View All</a>
+          </div>
+          <div class="table-scroll">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentOrdersBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==================== PRODUCTS ==================== -->
+        <section class="dash-panel" id="panel-products">
+          <div class="dash-panel-head">
+            <h3>All Products</h3>
+            <a href="404.html">View Store</a>
+          </div>
+          <div class="table-scroll">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="adminProductsBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==================== ORDERS ==================== -->
+        <section class="dash-panel" id="panel-orders">
+          <div class="dash-panel-head">
+            <h3>All Orders</h3>
+            <a href="404.html">Order Support</a>
+          </div>
+          <div class="table-scroll">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="adminOrdersBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==================== CUSTOMERS ==================== -->
+        <section class="dash-panel" id="panel-customers">
+          <div class="dash-panel-head">
+            <h3>Customers</h3>
+          </div>
+          <div class="table-scroll">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Email</th>
+                  <th>Orders</th>
+                  <th>Spent</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="adminCustomersBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==================== REPORTS ==================== -->
+        <section class="dash-panel" id="panel-reports">
+          <div class="dash-panel-head">
+            <h3>Category Performance</h3>
+          </div>
+          <div class="dash-bars" id="categoryBars"></div>
+
+          <div class="dash-panel-head" style="margin-top:26px;">
+            <h3>Best Sellers</h3>
+          </div>
+          <div class="table-scroll">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Units Sold</th>
+                  <th>Revenue</th>
+                </tr>
+              </thead>
+              <tbody id="bestSellersBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==================== SETTINGS ==================== -->
+        <section class="dash-panel" id="panel-settings">
+          <div class="dash-panel-head">
+            <h3>Store Settings</h3>
+          </div>
+          <form id="adminSettingsForm">
+            <div class="dash-form-row">
+              <div class="form-group">
+                <label for="setStore">Store Name</label>
+                <input type="text" id="setStore" value="Stackly Electronics" required maxlength="40">
+              </div>
+              <div class="form-group">
+                <label for="setEmail">Support Email</label>
+                <input type="email" id="setEmail" value="support@stackly.in" required>
+              </div>
+            </div>
+            <div class="dash-form-row">
+              <div class="form-group">
+                <label for="setCurrency">Currency</label>
+                <select id="setCurrency">
+                  <option value="₹" selected>Indian Rupee (₹)</option>
+                  <option value="$">US Dollar ($)</option>
+                  <option value="€">Euro (€)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="setShip">Free Shipping Above</label>
+                <input type="number" id="setShip" value="999" min="0" step="50">
+              </div>
+            </div>
+            <button type="submit" class="dash-btn dash-btn-primary"><i class="fas fa-save"></i> Save Settings</button>
+          </form>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <div class="dash-overlay" id="dashOverlay"></div>
+
+  <script src="js/products.js"></script>
+  <script>
+    /* ================== PANEL SWITCHING ================== */
+    const navLinks = document.querySelectorAll(".dash-nav a[data-panel]");
+    const panels = document.querySelectorAll(".dash-panel");
+
+    function switchPanel(name) {
+      panels.forEach((p) => p.classList.toggle("active", p.id === "panel-" + name));
+      navLinks.forEach((a) => a.classList.toggle("active", a.dataset.panel === name));
+    }
+
+    navLinks.forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        switchPanel(a.dataset.panel);
+        closeSidebar();
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      const go = e.target.closest(".dash-go");
+      if (go) {
+        e.preventDefault();
+        switchPanel(go.dataset.panel);
+      }
+    });
+
+    /* ================== MOBILE SIDEBAR ================== */
+    const dashSide = document.getElementById("dashSide");
+    const dashOverlay = document.getElementById("dashOverlay");
+
+    function openSidebar() { dashSide.classList.add("open"); dashOverlay.classList.add("show"); }
+    function closeSidebar() { dashSide.classList.remove("open"); dashOverlay.classList.remove("show"); }
+
+    const dashMenuBtn = document.getElementById("dashMenuBtn");
+    if (dashMenuBtn) dashMenuBtn.addEventListener("click", openSidebar);
+    const dashSideClose = document.getElementById("dashSideClose");
+    if (dashSideClose) dashSideClose.addEventListener("click", closeSidebar);
+    dashOverlay.addEventListener("click", closeSidebar);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSidebar(); });
+
+    /* ================== HELPERS ================== */
+    const fmt = window.StacklyProducts ? StacklyProducts.formatPrice : (n) => "₹" + Number(n).toLocaleString("en-IN");
+
+    /* ================== OVERVIEW STATS ================== */
+    const products = window.StacklyProducts ? StacklyProducts.PRODUCTS : [];
+    const totalValue = products.reduce((s, p) => s + p.price, 0);
+    const revenue = totalValue * 3;
+
+    document.getElementById("statRevenue").textContent = fmt(revenue);
+    document.getElementById("statOrders").textContent = 486;
+    document.getElementById("statProducts").textContent = products.length;
+    document.getElementById("statCustomers").textContent = 1_248;
+
+    /* ================== SALES BARS ================== */
+    const salesData = [
+      { label: "Mar", value: 45 },
+      { label: "Apr", value: 62 },
+      { label: "May", value: 38 },
+      { label: "Jun", value: 70 },
+      { label: "Jul", value: 55 },
+      { label: "Aug", value: 85 },
+    ];
+
+    function renderBars(target, data) {
+      const bars = data.map((d) => `
+        <div class="dash-bar">
+          <b>${d.value}%</b>
+          <div class="fill" style="height:${d.value}%"></div>
+          <span>${d.label}</span>
+        </div>`).join("");
+      document.getElementById(target).innerHTML = bars;
+    }
+
+    renderBars("salesBars", salesData);
+
+    /* ================== RECENT ORDERS ================== */
+    const adminOrders = [
+      { id: "ORD-1042", customer: "Priya Patel", date: "12 Aug 2026", items: 3, total: 88497, status: "Delivered", cls: "pill-success" },
+      { id: "ORD-1041", customer: "Rohan Mehta", date: "11 Aug 2026", items: 1, total: 44999, status: "Shipped", cls: "pill-info" },
+      { id: "ORD-1040", customer: "Sara Khan", date: "11 Aug 2026", items: 2, total: 15498, status: "Processing", cls: "pill-warn" },
+      { id: "ORD-1039", customer: "Arjun Singh", date: "10 Aug 2026", items: 4, total: 22996, status: "Delivered", cls: "pill-success" },
+      { id: "ORD-1038", customer: "Meera Iyer", date: "09 Aug 2026", items: 1, total: 17999, status: "Cancelled", cls: "pill-danger" },
+    ];
+
+    document.getElementById("recentOrdersBody").innerHTML = adminOrders.slice(0, 5).map((o) => `
+      <tr>
+        <td><b>${o.id}</b></td>
+        <td>${o.customer}</td>
+        <td>${o.date}</td>
+        <td>${fmt(o.total)}</td>
+        <td><span class="pill ${o.cls}">${o.status}</span></td>
+      </tr>`).join("");
+
+    document.getElementById("adminOrdersBody").innerHTML = adminOrders.map((o) => `
+      <tr>
+        <td><b>${o.id}</b></td>
+        <td>${o.customer}</td>
+        <td>${o.date}</td>
+        <td>${o.items}</td>
+        <td>${fmt(o.total)}</td>
+        <td><span class="pill ${o.cls}">${o.status}</span></td>
+      </tr>`).join("");
+
+    /* ================== PRODUCTS TABLE ================== */
+    const stockStatus = (id) => {
+      if (id % 5 === 0) return { label: "Low Stock", cls: "pill-warn" };
+      if (id % 7 === 0) return { label: "Out of Stock", cls: "pill-danger" };
+      return { label: "In Stock", cls: "pill-success" };
+    };
+
+    document.getElementById("adminProductsBody").innerHTML = products.map((p) => {
+      const s = stockStatus(p.id);
+      return `
+        <tr>
+          <td>
+            <div class="product-cell">
+              <img class="thumb" src="${p.image}" alt="${p.name}">
+              <div><b>${p.name}</b><small>${p.id}</small></div>
+            </div>
+          </td>
+          <td>${p.category}</td>
+          <td>${fmt(p.price)}</td>
+          <td>${(p.id * 7) % 60 + 3}</td>
+          <td><span class="pill ${s.cls}">${s.label}</span></td>
+        </tr>`;
+    }).join("");
+
+    /* ================== CUSTOMERS ================== */
+    const customers = [
+      { name: "Priya Patel", email: "priya.p@example.com", orders: 12, spent: 142500, status: "Active", cls: "pill-success" },
+      { name: "Rohan Mehta", email: "rohan.m@example.com", orders: 8, spent: 98600, status: "Active", cls: "pill-success" },
+      { name: "Sara Khan", email: "sara.k@example.com", orders: 5, spent: 41200, status: "Active", cls: "pill-success" },
+      { name: "Arjun Singh", email: "arjun.s@example.com", orders: 3, spent: 28900, status: "Inactive", cls: "pill-dark" },
+      { name: "Meera Iyer", email: "meera.i@example.com", orders: 15, spent: 210800, status: "VIP", cls: "pill-info" },
+    ];
+
+    document.getElementById("adminCustomersBody").innerHTML = customers.map((c) => `
+      <tr>
+        <td><b>${c.name}</b></td>
+        <td>${c.email}</td>
+        <td>${c.orders}</td>
+        <td>${fmt(c.spent)}</td>
+        <td><span class="pill ${c.cls}">${c.status}</span></td>
+      </tr>`).join("");
+
+    /* ================== REPORTS ================== */
+    const catData = [
+      { label: "Phones", value: 88 },
+      { label: "Laptops", value: 72 },
+      { label: "Audio", value: 64 },
+      { label: "Gaming", value: 58 },
+      { label: "Smart Home", value: 41 },
+      { label: "Others", value: 33 },
+    ];
+    renderBars("categoryBars", catData);
+
+    const bestSellers = [
+      { p: products[14], sold: 890 },
+      { p: products[21], sold: 1540 },
+      { p: products[24], sold: 645 },
+      { p: products[9], sold: 530 },
+      { p: products[4], sold: 340 },
+    ].filter((b) => b.p);
+
+    document.getElementById("bestSellersBody").innerHTML = bestSellers.map((b) => `
+      <tr>
+        <td>
+          <div class="product-cell">
+            <img class="thumb" src="${b.p.image}" alt="${b.p.name}">
+            <div><b>${b.p.name}</b></div>
+          </div>
+        </td>
+        <td>${b.p.category}</td>
+        <td>${b.sold.toLocaleString("en-IN")}</td>
+        <td>${fmt(b.p.price * b.sold)}</td>
+      </tr>`).join("");
+
+    /* ================== SETTINGS ================== */
+    document.getElementById("adminSettingsForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      showToast("Settings saved", "check");
+    });
+
+    /* ================== TOAST ================== */
+    function showToast(msg, icon) {
+      const old = document.querySelector(".dash-toast");
+      if (old) old.remove();
+      const t = document.createElement("div");
+      t.className = "dash-toast";
+      t.innerHTML = `<i class="fas fa-${icon}"></i> ${msg}`;
+      document.body.appendChild(t);
+      setTimeout(() => t.classList.add("show"), 10);
+      setTimeout(() => { t.classList.remove("show"); setTimeout(() => t.remove(), 300); }, 2400);
+    }
+  </script>
+</body>
+</html>

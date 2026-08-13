@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories – Stackly Electronics Marketplace</title>
+  <meta name="description" content="Browse electronics by category at Stackly — smartphones, laptops, gaming, smart home and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
+    <div class="top-bar">
+      <div class="container">
+        <p>🔥 Mega Electronics Sale - Up to 50% OFF</p>
+        <span>Free Shipping on Orders Above ₹999</span>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="container nav-container">
+          <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search smartphones, laptops, headphones...">
+          <button aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-actions">
+          <a href="wishlist.html" title="Wishlist"><i class="far fa-heart"></i><span>Wishlist</span></a>
+          <a href="login.html" title="Account"><i class="far fa-user"></i><span>Account</span></a>
+          <a href="cart.html" class="cart-icon" title="Cart"><i class="fas fa-shopping-cart"></i><span>Cart</span><b id="cartCount">0</b></a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <nav class="main-nav" id="mainNav">
+      <div class="container">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="categories.html">Categories</a>
+        <a href="deals.html">Deals</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="track-order"><i class="fas fa-truck-fast"></i> Track Order</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== PAGE HEADER ==================== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Product Categories</h1>
+      <p>Shop the entire electronics universe, organised.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span><span>Categories</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CATEGORY GRID ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <span>BROWSE</span>
+        <h2>All Categories</h2>
+        <p>Pick a category to explore thousands of products.</p>
+      </div>
+      <div class="category-grid categories-grid" id="categoryGrid">
+        <!-- Rendered from js/products.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROMO BANNER ==================== -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="offer-banner" style="background: linear-gradient(100deg, #111 0%, #001d33 60%, #003355 100%);">
+        <div class="offer-content">
+          <span class="hero-label" style="border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.08); color:#fff;">SMART HOME</span>
+          <h2>Automate Your <br> Entire <span>Home</span></h2>
+          <p>Bulbs, doorbells, locks and more — all voice-controlled from one app.</p>
+          <a href="products.html?cat=Smart%20Home" class="btn btn-primary mt-3">Explore Smart Home <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="offer-price"><small>STARTING AT</small>₹1,999</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+        <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+          <p>Your premium online electronics marketplace. Latest gadgets, honest prices and delivery you can count on.</p>
+          <div class="social-links">
+            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="404.html" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <ul class="footer-links">
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="deals.html">Deals</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="404.html">Privacy Policy</a></li>
+            <li><a href="404.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Get In Touch</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> 4th Floor, Tech Tower, MG Road, Bengaluru 560001</li>
+            <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+            <li><i class="fas fa-envelope"></i> support@stackly.in</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 <b>Stackly</b> Electronics Marketplace. All rights reserved.</span>
+        <span><i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-mastercard"></i> &nbsp; <i class="fab fa-cc-upi"></i> &nbsp; <i class="fab fa-cc-paypal"></i></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const P = window.StacklyProducts;
+      const grid = document.getElementById("categoryGrid");
+
+      grid.innerHTML = P.CATEGORIES.map(
+        (c) => `
+        <a href="products.html?cat=${encodeURIComponent(c.name)}" class="category-card">
+          <div class="category-icon"><i class="fas ${c.icon}"></i></div>
+          <h3>${c.name}</h3>
+          <p>${c.count}+ Products</p>
+          <span class="cat-link">Shop Now <i class="fas fa-arrow-right"></i></span>
+        </a>`
+      ).join("");
+
+      if (window.StacklyUI) window.StacklyUI.reveal();
+      window.StacklyCart.updateCartBadge();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deals – Stackly Electronics Marketplace</title>
+  <meta name="description" content="Grab today's hottest Stackly flash deals — limited-time electronics at the best prices.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
+    <div class="top-bar">
+      <div class="container">
+        <p>🔥 Mega Electronics Sale - Up to 50% OFF</p>
+        <span>Free Shipping on Orders Above ₹999</span>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="container nav-container">
+          <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search smartphones, laptops, headphones...">
+          <button aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-actions">
+          <a href="wishlist.html" title="Wishlist"><i class="far fa-heart"></i><span>Wishlist</span></a>
+          <a href="login.html" title="Account"><i class="far fa-user"></i><span>Account</span></a>
+          <a href="cart.html" class="cart-icon" title="Cart"><i class="fas fa-shopping-cart"></i><span>Cart</span><b id="cartCount">0</b></a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <nav class="main-nav" id="mainNav">
+      <div class="container">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="categories.html">Categories</a>
+        <a href="deals.html">Deals</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="track-order"><i class="fas fa-truck-fast"></i> Track Order</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== PAGE HEADER ==================== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>⚡ Flash Deals</h1>
+      <p>Limited-time prices on today's hottest tech.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span><span>Deals</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DEALS GRID ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="shop-topbar">
+        <p><b id="resultCount">0</b> deals found</p>
+        <select class="sort-select" id="sortSelect">
+          <option value="popular">Sort: Popularity</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="name">Name: A–Z</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- Rendered -->
+      </div>
+
+      <div class="load-more-wrap">
+        <button class="btn btn-outline" id="loadMoreBtn" style="border-color:var(--dark); color:var(--dark);">Load More Deals</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+        <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+          <p>Your premium online electronics marketplace. Latest gadgets, honest prices and delivery you can count on.</p>
+          <div class="social-links">
+            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="404.html" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <ul class="footer-links">
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="deals.html">Deals</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="404.html">Privacy Policy</a></li>
+            <li><a href="404.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Get In Touch</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> 4th Floor, Tech Tower, MG Road, Bengaluru 560001</li>
+            <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+            <li><i class="fas fa-envelope"></i> support@stackly.in</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 <b>Stackly</b> Electronics Marketplace. All rights reserved.</span>
+        <span><i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-mastercard"></i> &nbsp; <i class="fab fa-cc-upi"></i> &nbsp; <i class="fab fa-cc-paypal"></i></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const P = window.StacklyProducts;
+      const grid = document.getElementById("productGrid");
+      const countLabel = document.getElementById("resultCount");
+      const sortSelect = document.getElementById("sortSelect");
+      const loadMoreBtn = document.getElementById("loadMoreBtn");
+      const PAGE_SIZE = 8;
+      let visibleCount = PAGE_SIZE;
+
+      const list = P.PRODUCTS.filter((p) => p.tag === "flash");
+
+      function applySort() {
+        switch (sortSelect.value) {
+          case "price-asc": list.sort((a, b) => a.price - b.price); break;
+          case "price-desc": list.sort((a, b) => b.price - a.price); break;
+          case "rating": list.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews); break;
+          case "name": list.sort((a, b) => a.name.localeCompare(b.name)); break;
+          default: list.sort((a, b) => b.reviews - a.reviews);
+        }
+      }
+
+      function render() {
+        applySort();
+        countLabel.textContent = list.length;
+        grid.innerHTML = list.slice(0, visibleCount).map(P.productCardHTML).join("") ||
+          `<div class="cart-empty" style="grid-column:1/-1;">
+            <i class="fas fa-box-open"></i>
+            <h2>No deals right now</h2>
+            <p>Check back soon for the next flash sale.</p>
+          </div>`;
+        loadMoreBtn.style.display = visibleCount >= list.length ? "none" : "inline-flex";
+        if (window.StacklyUI) window.StacklyUI.reveal();
+        window.StacklyCart.updateCartBadge();
+      }
+
+      sortSelect.addEventListener("change", () => { visibleCount = PAGE_SIZE; render(); });
+      loadMoreBtn.addEventListener("click", () => { visibleCount += PAGE_SIZE; render(); });
+
+      render();
+    });
+  </script>
+</body>
+</html>

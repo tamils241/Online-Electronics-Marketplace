@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart – Stackly Electronics Marketplace</title>
+  <meta name="description" content="Review and manage the items in your Stackly shopping cart.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
+    <div class="top-bar">
+      <div class="container">
+        <p>🔥 Mega Electronics Sale - Up to 50% OFF</p>
+        <span>Free Shipping on Orders Above ₹999</span>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="container nav-container">
+          <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search smartphones, laptops, headphones...">
+          <button aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-actions">
+          <a href="wishlist.html" title="Wishlist"><i class="far fa-heart"></i><span>Wishlist</span></a>
+          <a href="login.html" title="Account"><i class="far fa-user"></i><span>Account</span></a>
+          <a href="cart.html" class="cart-icon" title="Cart"><i class="fas fa-shopping-cart"></i><span>Cart</span><b id="cartCount">0</b></a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <nav class="main-nav" id="mainNav">
+      <div class="container">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="categories.html">Categories</a>
+        <a href="deals.html">Deals</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="track-order"><i class="fas fa-truck-fast"></i> Track Order</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== PAGE HEADER ==================== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Your Cart</h1>
+      <p>Review and checkout your favourite electronics.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span><span>Cart</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CART ==================== -->
+  <section class="section">
+    <div class="container cart-layout" id="cartLayout">
+      <!-- Rendered from cart.js -->
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+        <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+          <p>Your premium online electronics marketplace. Latest gadgets, honest prices and delivery you can count on.</p>
+          <div class="social-links">
+            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="404.html" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <ul class="footer-links">
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="deals.html">Deals</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="404.html">Privacy Policy</a></li>
+            <li><a href="404.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Get In Touch</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> 4th Floor, Tech Tower, MG Road, Bengaluru 560001</li>
+            <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+            <li><i class="fas fa-envelope"></i> support@stackly.in</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 <b>Stackly</b> Electronics Marketplace. All rights reserved.</span>
+        <span><i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-mastercard"></i> &nbsp; <i class="fab fa-cc-upi"></i> &nbsp; <i class="fab fa-cc-paypal"></i></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const P = window.StacklyProducts;
+      const C = window.StacklyCart;
+      const layout = document.getElementById("cartLayout");
+      let appliedCoupon = null;
+
+      function render() {
+        const items = C.getCart();
+
+        if (!items.length) {
+          layout.innerHTML = `
+            <div class="cart-empty" style="grid-column:1/-1; background:var(--white); border:1px solid var(--border); border-radius:var(--radius);">
+              <i class="fas fa-shopping-cart"></i>
+              <h2>Your cart is empty</h2>
+              <p>Looks like you haven't added anything yet.</p>
+              <a href="products.html" class="btn btn-primary">Start Shopping <i class="fas fa-arrow-right"></i></a>
+            </div>`;
+          return;
+        }
+
+        let subtotal = 0;
+        let saving = 0;
+
+        const itemHTML = items.map((item) => {
+          const p = P.getProductById(item.id);
+          if (!p) return "";
+          subtotal += p.price * item.qty;
+          if (p.oldPrice) saving += (p.oldPrice - p.price) * item.qty;
+          return `
+            <div class="cart-item" data-id="${p.id}">
+              <a class="cart-item-image" href="product-details.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
+              <div class="cart-item-info">
+                <h3><a href="product-details.html?id=${p.id}" style="color:inherit;">${p.name}</a></h3>
+                <span>${p.category}</span>
+                <div class="cart-item-price">${P.formatPrice(p.price)}${p.oldPrice ? ` <del style="font-size:12px; font-weight:400; color:#999;">${P.formatPrice(p.oldPrice)}</del>` : ""}</div>
+              </div>
+              <div class="cart-item-actions">
+                <div class="qty-control">
+                  <button class="qty-minus" data-id="${p.id}" aria-label="Decrease"><i class="fas fa-minus"></i></button>
+                  <input type="text" class="qty-val" data-id="${p.id}" value="${item.qty}" readonly>
+                  <button class="qty-plus" data-id="${p.id}" aria-label="Increase"><i class="fas fa-plus"></i></button>
+                </div>
+                <button class="remove-item" data-id="${p.id}" aria-label="Remove"><i class="fas fa-trash-can"></i></button>
+              </div>
+            </div>`;
+        }).join("");
+
+        const shipping = subtotal >= 999 ? 0 : 99;
+        let discount = appliedCoupon ? Math.round(subtotal * 0.10) : 0;
+        const total = subtotal - discount + shipping;
+
+        layout.innerHTML = `
+          <div>
+            <div class="cart-items">
+              ${itemHTML}
+            </div>
+          </div>
+          <aside class="cart-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-row"><span>Subtotal</span><b id="sumSubtotal">${P.formatPrice(subtotal)}</b></div>
+            <div class="summary-row saving"><span>You Save</span><span>${P.formatPrice(saving)}</span></div>
+            <div class="summary-row"><span>Shipping</span><b>${shipping === 0 ? "FREE" : P.formatPrice(shipping)}</b></div>
+            ${appliedCoupon ? `<div class="summary-row saving"><span>Coupon (STACKLY10)</span><span>-${P.formatPrice(discount)}</span></div>` : ""}
+            <div class="summary-row total"><span>Total</span><span>${P.formatPrice(total)}</span></div>
+            <div class="coupon-box">
+              <input type="text" id="couponInput" placeholder="Coupon code (try STACKLY10)">
+              <button id="applyCoupon">Apply</button>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-block">Proceed to Checkout <i class="fas fa-arrow-right"></i></a>
+            <a href="products.html" class="btn btn-outline btn-block" style="border-color:var(--dark); color:var(--dark); margin-top:10px;">Continue Shopping</a>
+          </aside>
+        `;
+
+        wireEvents();
+        C.updateCartBadge();
+      }
+
+      function wireEvents() {
+        layout.querySelectorAll(".qty-plus").forEach((b) => {
+          b.addEventListener("click", () => {
+            const item = C.getCart().find((i) => i.id === Number(b.dataset.id));
+            if (item) C.setQty(item.id, item.qty + 1);
+            render();
+          });
+        });
+        layout.querySelectorAll(".qty-minus").forEach((b) => {
+          b.addEventListener("click", () => {
+            const item = C.getCart().find((i) => i.id === Number(b.dataset.id));
+            if (item && item.qty > 1) C.setQty(item.id, item.qty - 1);
+            render();
+          });
+        });
+        layout.querySelectorAll(".remove-item").forEach((b) => {
+          b.addEventListener("click", () => {
+            C.removeFromCart(b.dataset.id);
+            C.showToast("Item removed from cart", "trash-can");
+            render();
+          });
+        });
+        const applyBtn = layout.querySelector("#applyCoupon");
+        if (applyBtn) {
+          applyBtn.addEventListener("click", () => {
+            const code = layout.querySelector("#couponInput").value.trim().toUpperCase();
+            if (code === "STACKLY10") {
+              appliedCoupon = code;
+              C.showToast("Coupon applied! 10% off.", "ticket");
+            } else {
+              C.showToast("Invalid coupon code", "circle-xmark");
+            }
+            render();
+          });
+        }
+      }
+
+      render();
+    });
+  </script>
+</body>
+</html>

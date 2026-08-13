@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout – Stackly Electronics Marketplace</title>
+  <meta name="description" content="Secure checkout for your Stackly electronics order.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
+    <div class="top-bar">
+      <div class="container">
+        <p>🔥 Mega Electronics Sale - Up to 50% OFF</p>
+        <span>Free Shipping on Orders Above ₹999</span>
+      </div>
+    </div>
+    <div class="navbar">
+      <div class="container nav-container">
+          <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search smartphones, laptops, headphones...">
+          <button aria-label="Search"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-actions">
+          <a href="wishlist.html" title="Wishlist"><i class="far fa-heart"></i><span>Wishlist</span></a>
+          <a href="login.html" title="Account"><i class="far fa-user"></i><span>Account</span></a>
+          <a href="cart.html" class="cart-icon" title="Cart"><i class="fas fa-shopping-cart"></i><span>Cart</span><b id="cartCount">0</b></a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <nav class="main-nav" id="mainNav">
+      <div class="container">
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="categories.html">Categories</a>
+        <a href="deals.html">Deals</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="track-order"><i class="fas fa-truck-fast"></i> Track Order</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== PAGE HEADER ==================== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Checkout</h1>
+      <p>Complete your purchase securely in under a minute.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span><a href="cart.html">Cart</a><span>/</span><span>Checkout</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CHECKOUT ==================== -->
+  <section class="section">
+    <div class="container checkout-layout" id="checkoutLayout">
+      <!-- Rendered -->
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+        <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+          <p>Your premium online electronics marketplace. Latest gadgets, honest prices and delivery you can count on.</p>
+          <div class="social-links">
+            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="404.html" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <ul class="footer-links">
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="deals.html">Deals</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="404.html">Privacy Policy</a></li>
+            <li><a href="404.html">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Get In Touch</h3>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> 4th Floor, Tech Tower, MG Road, Bengaluru 560001</li>
+            <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+            <li><i class="fas fa-envelope"></i> support@stackly.in</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 <b>Stackly</b> Electronics Marketplace. All rights reserved.</span>
+        <span><i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-mastercard"></i> &nbsp; <i class="fab fa-cc-upi"></i> &nbsp; <i class="fab fa-cc-paypal"></i></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const P = window.StacklyProducts;
+      const C = window.StacklyCart;
+      const layout = document.getElementById("checkoutLayout");
+
+      function render() {
+        const items = C.getCart();
+
+        if (!items.length) {
+          layout.innerHTML = `
+            <div class="cart-empty" style="grid-column:1/-1; background:var(--white); border:1px solid var(--border); border-radius:var(--radius);">
+              <i class="fas fa-shopping-cart"></i>
+              <h2>Nothing to check out</h2>
+              <p>Your cart is empty.</p>
+              <a href="products.html" class="btn btn-primary">Browse Products</a>
+            </div>`;
+          return;
+        }
+
+        let subtotal = 0;
+        let saving = 0;
+        const rows = items.map((item) => {
+          const p = P.getProductById(item.id);
+          if (!p) return "";
+          subtotal += p.price * item.qty;
+          if (p.oldPrice) saving += (p.oldPrice - p.price) * item.qty;
+          return `
+            <div class="cart-item" style="grid-template-columns: 60px 1fr auto; padding: 14px 0;">
+              <div class="cart-item-image" style="width:60px; height:60px;"><img src="${p.image}" alt=""></div>
+              <div class="cart-item-info">
+                <h3 style="font-size:14px;">${p.name}</h3>
+                <span>Qty: ${item.qty}</span>
+              </div>
+              <div class="cart-item-price">${P.formatPrice(p.price * item.qty)}</div>
+            </div>`;
+        }).join("");
+
+        const shipping = subtotal >= 999 ? 0 : 99;
+        const total = subtotal + shipping;
+
+        layout.innerHTML = `
+          <div>
+            <form class="checkout-form" id="checkoutForm" novalidate>
+              <div class="form-step-title"><span class="step-num">1</span> Contact & Shipping Address</div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" required maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters, no numbers" placeholder="John" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" required maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters, no numbers" placeholder="Doe" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" required placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number *</label>
+                  <input type="tel" id="phone" required placeholder="+91 98765 43210" pattern="[0-9]{10}" minlength="10" maxlength="10" title="Enter a 10-digit phone number" oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="address">Street Address *</label>
+                <input type="text" id="address" required placeholder="House no, street, area">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City *</label>
+                  <input type="text" id="city" required maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters (up to 16 characters), no numbers" placeholder="Bengaluru" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
+                </div>
+                <div class="form-group">
+                  <label for="state">State *</label>
+                  <input type="text" id="state" required maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters (up to 16 characters), no numbers" placeholder="Karnataka" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pincode">PIN Code *</label>
+                  <input type="text" id="pincode" required placeholder="560001" pattern="[0-9]{6}" minlength="6" maxlength="6" title="Enter a 6-digit PIN code" oninput="this.value=this.value.replace(/\D/g,'').slice(0,6)">
+                </div>
+              </div>
+
+              <div class="form-step-title" style="margin-top:30px;"><span class="step-num">2</span> Payment Method</div>
+              <div class="payment-options" id="paymentOptions">
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="UPI" checked> <span><i class="fas fa-qrcode" style="color:var(--primary);"></i> UPI / QR Code</span>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="Card"> <span><i class="far fa-credit-card" style="color:var(--primary);"></i> Credit / Debit Card</span>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="COD"> <span><i class="fas fa-money-bill-wave" style="color:var(--primary);"></i> Cash on Delivery</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block mt-3">Place Order <i class="fas fa-lock"></i></button>
+            </form>
+          </div>
+
+          <aside class="cart-summary order-summary">
+            <h3>Order Summary</h3>
+            ${rows}
+            <div class="summary-row"><span>Subtotal</span><b>${P.formatPrice(subtotal)}</b></div>
+            <div class="summary-row saving"><span>You Save</span><span>${P.formatPrice(saving)}</span></div>
+            <div class="summary-row"><span>Shipping</span><b>${shipping === 0 ? "FREE" : P.formatPrice(shipping)}</b></div>
+            <div class="summary-row total"><span>Total</span><span>${P.formatPrice(total)}</span></div>
+            <p style="font-size:12px; color:var(--gray); margin-top:12px;"><i class="fas fa-shield-halved" style="color:var(--success);"></i> 100% secure & encrypted payment.</p>
+          </aside>
+        `;
+
+        const form = document.getElementById("checkoutForm");
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          C.clearCart();
+          C.updateCartBadge();
+          layout.innerHTML = `
+            <div class="cart-empty" style="grid-column:1/-1; background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:60px 20px;">
+              <i class="fas fa-circle-check" style="color:var(--success); font-size:72px;"></i>
+              <h2 style="font-size:30px;">Order Placed Successfully!</h2>
+              <p>Thank you for shopping with Stackly. A confirmation email is on its way.</p>
+              <p style="color:var(--gray); font-size:14px;">Order ID: <b style="color:var(--primary);">STK-${Date.now().toString().slice(-8)}</b></p>
+              <div class="order-actions">
+                <a href="products.html" class="btn btn-primary">Continue Shopping <i class="fas fa-arrow-right"></i></a>
+                <a href="index.html" class="btn btn-outline" style="border-color:var(--dark); color:var(--dark);">Back to Home</a>
+              </div>
+            </div>`;
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      render();
+      C.updateCartBadge();
+    });
+  </script>
+</body>
+</html>
