@@ -555,6 +555,27 @@
     text-align: center;
   }
 
+  .footer-features {
+    grid-template-columns: 1fr 1fr;
+    padding: 15px 0;
+  }
+
+  .footer-feature {
+    justify-content: flex-start;
+    padding: 12px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-feature:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-feature:nth-child(3),
+  .footer-feature:nth-child(4) {
+    border-bottom: none;
+  }
+
   /* ================= INNER PAGES ================= */
   .page-header h1 {
     font-size: 30px;
@@ -643,7 +664,7 @@
     grid-template-columns: 1fr;
   }
 
-  .auth-wrap {
+  .auth-main {
     padding: 28px 22px;
   }
 }
@@ -1058,6 +1079,31 @@
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: 15px;
+  }
+
+  .footer-features {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-feature {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: center;
+  }
+
+  .footer-feature:last-child {
+    border-bottom: none;
+  }
+
+  .footer-payments {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .payment-icons {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   /* ================= PAGE HEADER ================= */
@@ -1172,8 +1218,11 @@
   }
 
   .checkout-form,
-  .contact-form,
-  .auth-wrap {
+  .contact-form {
+    padding: 22px 18px;
+  }
+
+  .auth-main {
     padding: 22px 18px;
   }
 
@@ -1360,6 +1409,28 @@
         height: 500px;
 
         margin: 55px auto 0;
+    }
+
+    .auth-wrap {
+        max-width: 520px;
+        grid-template-columns: 1fr;
+    }
+
+    .auth-side {
+        padding: 26px 24px;
+        gap: 18px;
+    }
+
+    .auth-side-body h3 {
+        font-size: 22px;
+    }
+
+    .auth-side-img {
+        display: none;
+    }
+
+    .auth-benefits {
+        margin-top: 0;
     }
 
 }

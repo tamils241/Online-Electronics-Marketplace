@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <style>
+    body { padding-top: 0; }
+    .auth-side-img { transition: opacity 0.8s ease; }
     .pw-meter { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
     .pw-field { position: relative; }
     .pw-field input { padding-right: 44px; }
@@ -24,6 +26,7 @@
     .pw-meter[data-strength="2"] span:nth-child(-n+2) { background: #e67e22; }
     .pw-meter[data-strength="3"] span:nth-child(-n+3) { background: #f1c40f; }
     .pw-meter[data-strength="4"] span:nth-child(-n+4) { background: var(--success, #2ecc71); }
+    .pw-meter[data-strength="4"] small { color: var(--success, #2ecc71); font-weight: 600; }
     .role-select { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .role-card { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 10px; border: 2px solid var(--border, #e5e5e5); border-radius: 12px; cursor: pointer; text-align: center; transition: border-color .2s, background .2s; }
     .role-card i { font-size: 22px; color: var(--gray, #666); }
@@ -36,47 +39,61 @@
 </head>
 <body>
 
-  <!-- ==================== HEADER ==================== -->
-  <header class="header" id="header">
-    <div class="top-bar">
-      <div class="container">
-        <p>🔥 Mega Electronics Sale - Up to 50% OFF</p>
-        <span>Free Shipping on Orders Above ₹999</span>
-      </div>
-    </div>
-    <div class="navbar">
-      <div class="container nav-container">
-          <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
-        <div class="search-box">
-          <input type="text" id="searchInput" placeholder="Search smartphones, laptops, headphones...">
-          <button aria-label="Search"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="nav-actions">
-          <a href="wishlist.html" title="Wishlist"><i class="far fa-heart"></i><span>Wishlist</span></a>
-          <a href="login.html" title="Account"><i class="far fa-user"></i><span>Account</span></a>
-          <a href="cart.html" class="cart-icon" title="Cart"><i class="fas fa-shopping-cart"></i><span>Cart</span><b id="cartCount">0</b></a>
-        </div>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
-      </div>
-    </div>
-    <nav class="main-nav" id="mainNav">
-      <div class="container">
-        <a href="index.html">Home</a>
-        <a href="products.html">All Products</a>
-        <a href="categories.html">Categories</a>
-        <a href="deals.html">Deals</a>
-        <a href="new-arrivals.html">New Arrivals</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="contact.html" class="track-order"><i class="fas fa-truck-fast"></i> Track Order</a>
-      </div>
-    </nav>
-  </header>
-
   <!-- ==================== AUTH ==================== -->
   <section class="section" style="background: linear-gradient(135deg, #fff7f2 0%, #ffe9de 50%, #fff3ec 100%);">
     <div class="container">
       <div class="auth-wrap">
+
+        <!-- ==================== left sidebar ==================== -->
+        <div class="auth-side">
+          <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
+          <div class="auth-side-body">
+            <h3>Gear up. <span>Go digital.</span></h3>
+            <p>Join Stackly for the latest electronics, member-only deals and lightning-fast delivery.</p>
+            <img src="images/hero/hero-device.webp" alt="Stackly gadgets" class="auth-side-img">
+          </div>
+          <!-- LEFT SIDE BENEFITS -->
+          <div class="auth-benefits">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <strong>Trusted Shopping</strong>
+                <span>100% secure & verified products</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-truck-fast"></i>
+              </div>
+              <div>
+                <strong>Fast Delivery</strong>
+                <span>Quick delivery to your doorstep</span>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-tags"></i>
+              </div>
+              <div>
+                <strong>Member Deals</strong>
+                <span>Exclusive offers & special discounts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MEMBER DEAL BANNER -->
+          <div class="member-banner">
+            <i class="fa-solid fa-star"></i>
+            <div>
+              <strong>Exclusive Member Deals</strong>
+              <span>Early access to sales & special offers</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-main">
         <div class="auth-tabs">
           <a href="#" class="active" data-auth="login">Login</a>
           <a href="#" data-auth="register">Register</a>
@@ -84,7 +101,7 @@
 
         <!-- LOGIN -->
         <form id="loginForm">
-          <h2>Welcome Back 👋</h2>
+          <h2>Welcome Back </h2>
           <p>Login to your Stackly account.</p>
           <div class="form-group">
             <label for="loginEmail">Email Address</label>
@@ -119,7 +136,7 @@
 
         <!-- REGISTER -->
         <form id="registerForm" style="display:none;">
-          <h2>Create Account ✨</h2>
+          <h2>Create Account </h2>
           <p>Join Stackly for faster checkout & member deals.</p>
           <div class="form-row">
             <div class="form-group">
@@ -155,7 +172,7 @@
           <div class="form-group">
             <label for="regPass">Password</label>
             <div class="pw-field">
-              <input type="password" id="regPass" placeholder="8+ chars, uppercase, lowercase, number, symbol" minlength="8" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" title="Must be 8+ characters with uppercase, lowercase, a number and a special character" oninput="updatePassStrength(this.value)">
+              <input type="password" id="regPass" placeholder="8+ chars, uppercase, lowercase, number, symbol" minlength="8" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" title="Must be 8+ characters with uppercase, lowercase, a number and a special character">
               <button type="button" class="pw-toggle" data-target="regPass" aria-label="Show password"><i class="far fa-eye"></i></button>
             </div>
             <div class="pw-meter" id="pwMeter"><span></span><span></span><span></span><span></span><small>Use 8+ characters with upper &amp; lower case, a number and a symbol.</small></div>
@@ -173,61 +190,10 @@
         </div>
 
         <p class="auth-footer" id="authFooter">New to Stackly? <a href="#" data-auth="register">Create an account</a></p>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-about">
-        <a href="index.html" class="logo"><img src="images/logo/logo.webp" alt="Stackly"></a>
-          <p>Your premium online electronics marketplace. Latest gadgets, honest prices and delivery you can count on.</p>
-          <div class="social-links">
-            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="404.html" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-            <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-        <div>
-          <h3>Shop</h3>
-          <ul class="footer-links">
-            <li><a href="products.html">All Products</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="deals.html">Deals</a></li>
-            <li><a href="wishlist.html">Wishlist</a></li>
-            <li><a href="cart.html">Cart</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Company</h3>
-          <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="404.html">Privacy Policy</a></li>
-            <li><a href="404.html">Terms &amp; Conditions</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Get In Touch</h3>
-          <ul class="footer-contact">
-            <li><i class="fas fa-map-marker-alt"></i> 4th Floor, Tech Tower, MG Road, Bengaluru 560001</li>
-            <li><i class="fas fa-phone"></i> +91 98765 43210</li>
-            <li><i class="fas fa-envelope"></i> support@stackly.in</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 <b>Stackly</b> Electronics Marketplace. All rights reserved.</span>
-        <span><i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-mastercard"></i> &nbsp; <i class="fab fa-cc-upi"></i> &nbsp; <i class="fab fa-cc-paypal"></i></span>
-      </div>
-    </div>
-  </footer>
-
-  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
@@ -246,15 +212,35 @@
           this.setAttribute("aria-label", show ? "Hide password" : "Show password");
         });
       });
+      const regPass = document.getElementById("regPass");
+      const pwMeter = document.getElementById("pwMeter");
+      if (regPass) regPass.addEventListener("input", function () { updatePassStrength(regPass.value); });
       function updatePassStrength(val) {
-        const meter = document.getElementById("pwMeter");
-        if (!meter) return;
-        let score = 0;
-        if (val.length >= 8) score++;
-        if (/[a-z]/.test(val) && /[A-Z]/.test(val)) score++;
-        if (/\d/.test(val)) score++;
-        if (/[^A-Za-z0-9]/.test(val)) score++;
-        meter.dataset.strength = val ? Math.max(1, score) : "";
+        if (!pwMeter) return;
+        const checks = {
+          len: val.length >= 8,
+          case: /[a-z]/.test(val) && /[A-Z]/.test(val),
+          num: /\d/.test(val),
+          sym: /[^A-Za-z0-9]/.test(val)
+        };
+        const score = Object.values(checks).filter(Boolean).length;
+        pwMeter.dataset.strength = val ? Math.max(1, score) : "";
+        const label = pwMeter.querySelector("small");
+        if (!label) return;
+        if (!val) {
+          label.textContent = "Use 8+ characters with upper & lower case, a number and a symbol.";
+        } else if (score >= 4) {
+          label.textContent = "Strong password. Ready to go!";
+        } else if (score === 3) {
+          label.textContent = "Good, but add a special character for strength.";
+        } else {
+          const missing = [];
+          if (!checks.len) missing.push("8+ characters");
+          if (!checks.case) missing.push("upper & lower case");
+          if (!checks.num) missing.push("a number");
+          if (!checks.sym) missing.push("a symbol");
+          label.textContent = "Missing: " + missing.join(", ") + ".";
+        }
       }
       const footer = document.getElementById("authFooter");
 
@@ -296,11 +282,11 @@
 
       registerForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        if (!registerForm.checkValidity()) return registerForm.reportValidity();
         if (!document.getElementById("termsCheck").checked) {
           window.StacklyCart.showToast("Please accept the Terms & Privacy Policy to continue.", "exclamation-circle");
           return;
         }
+        if (!registerForm.checkValidity()) return registerForm.reportValidity();
         const role = (document.querySelector('input[name="regRole"]:checked') || {}).value || "";
         window.StacklyCart.showToast("Account created! Registered as " + role.charAt(0).toUpperCase() + role.slice(1) + ". Welcome to Stackly!", "user-plus");
         registerForm.reset();
@@ -309,6 +295,20 @@
           window.location.href = "login.html";
         }, 1200);
       });
+
+      const sideImages = ["images/hero/hero-device.webp", "images/hero/hero-device-2.webp", "images/hero/hero-device-3.webp"];
+      const sideImg = document.querySelector(".auth-side-img");
+      if (sideImg) {
+        let idx = 0;
+        setInterval(function () {
+          idx = (idx + 1) % sideImages.length;
+          sideImg.style.opacity = "0";
+          setTimeout(function () {
+            sideImg.src = sideImages[idx];
+            sideImg.style.opacity = "1";
+          }, 800);
+        }, 3500);
+      }
     });
   </script>
 </body>
