@@ -15,6 +15,17 @@
   <style>
     body { padding-top: 0; }
     .auth-side-img { transition: opacity 0.8s ease; }
+    .back-home-btn {
+      background: transparent;
+      color: var(--dark, #111);
+      border: 2px solid var(--border, #e8e8e8);
+      margin-top: 14px;
+    }
+    .back-home-btn:hover {
+      border-color: var(--primary, #ff5a1f);
+      color: var(--primary, #ff5a1f);
+      background: rgba(255, 90, 31, 0.06);
+    }
     .pw-meter { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
     .pw-field { position: relative; }
     .pw-field input { padding-right: 44px; }
@@ -190,6 +201,8 @@
         </div>
 
         <p class="auth-footer" id="authFooter">New to Stackly? <a href="#" data-auth="register">Create an account</a></p>
+
+        <a href="index.html" class="btn btn-block back-home-btn"><i class="fas fa-home"></i> Back to Home</a>
         </div>
       </div>
     </div>
