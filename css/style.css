@@ -3455,13 +3455,11 @@ body.error-page .section {
   height: 50px;
   padding: 0 16px;
   font-size: 14px;
+  font-weight: 600;
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-}
-
-.cart-empty .btn i {
-  font-size: 18px;
+  text-decoration: none;
 }

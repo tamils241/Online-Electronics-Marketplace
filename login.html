@@ -116,12 +116,12 @@
           <p>Login to your Stackly account.</p>
           <div class="form-group">
             <label for="loginEmail">Email Address</label>
-            <input type="email" id="loginEmail" placeholder="you@example.com" required>
+            <input type="email" id="loginEmail" placeholder="you@example.com" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address, e.g. you@example.com">
           </div>
           <div class="form-group">
             <label for="loginPass">Password</label>
             <div class="pw-field">
-              <input type="password" id="loginPass" placeholder="Enter your password" required>
+              <input type="password" id="loginPass" placeholder="Enter your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" title="Must be 8+ characters with uppercase, lowercase, a number and a special character">
               <button type="button" class="pw-toggle" data-target="loginPass" aria-label="Show password"><i class="far fa-eye"></i></button>
             </div>
           </div>
@@ -139,7 +139,7 @@
             </div>
           </div>
           <div class="auth-check">
-            <label><input type="checkbox"> Remember me</label>
+            <label><input type="checkbox" id="rememberMe"> Remember me</label>
             <a href="404.html">Forgot password?</a>
           </div>
           <button type="submit" class="btn btn-primary btn-block">Login <i class="fas fa-arrow-right"></i></button>
@@ -161,7 +161,16 @@
           </div>
           <div class="form-group">
             <label for="regEmail">Email Address</label>
-            <input type="email" id="regEmail" placeholder="you@example.com" required>
+            <input
+              type="email"
+              id="regEmail"
+              name="email"
+              placeholder="you@example.com"
+              required
+              autocomplete="email"
+              maxlength="100"
+              pattern="^[A-Za-z0-9](?!.*\.\.)[A-Za-z0-9._%+-]*[A-Za-z0-9]@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z]{2,})+$"
+              title="Enter a valid email address, e.g. john@gmail.com">
           </div>
           <div class="form-group">
             <label for="regPhone">Phone Number</label>
@@ -215,6 +224,39 @@
     document.addEventListener("DOMContentLoaded", function () {
       const loginForm = document.getElementById("loginForm");
       const registerForm = document.getElementById("registerForm");
+
+      const savedEmail = localStorage.getItem("stacklyRemember");
+      if (savedEmail) {
+        const loginEmailInput = document.getElementById("loginEmail");
+        const rememberMe = document.getElementById("rememberMe");
+        if (loginEmailInput && rememberMe) {
+          loginEmailInput.value = savedEmail;
+          rememberMe.checked = true;
+        }
+      }
+      const rememberMeBox = document.getElementById("rememberMe");
+      const rememberLabel = document.querySelector('#loginForm .auth-check label');
+      if (rememberMeBox && rememberLabel) {
+        rememberLabel.addEventListener("click", function (e) {
+          e.preventDefault();
+          rememberMeBox.checked = !rememberMeBox.checked;
+          window.StacklyCart.showToast(
+            rememberMeBox.checked
+              ? "Remember me enabled - your email will be saved on this device."
+              : "Remember me disabled.",
+            rememberMeBox.checked ? "check-circle" : "times-circle"
+          );
+        });
+        rememberMeBox.addEventListener("click", function (e) {
+          e.stopPropagation();
+          window.StacklyCart.showToast(
+            rememberMeBox.checked
+              ? "Remember me enabled - your email will be saved on this device."
+              : "Remember me disabled.",
+            rememberMeBox.checked ? "check-circle" : "times-circle"
+          );
+        });
+      }
       document.querySelectorAll(".pw-toggle").forEach((btn) => {
         btn.addEventListener("click", function () {
           const input = document.getElementById(this.dataset.target);
@@ -284,7 +326,24 @@
 
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
+        const loginEmailInput = document.getElementById("loginEmail");
+        const loginPassInput = document.getElementById("loginPass");
+        const emailOk = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(loginEmailInput.value.trim());
+        const passOk = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/.test(loginPassInput.value);
+        loginEmailInput.setCustomValidity(emailOk ? "" : "Please enter a valid email address, e.g. you@example.com");
+        loginPassInput.setCustomValidity(passOk ? "" : "Password must be 8+ characters with uppercase, lowercase, a number and a special character");
         if (!loginForm.checkValidity()) return loginForm.reportValidity();
+        const rememberMe = document.getElementById("rememberMe");
+        if (!rememberMe || !rememberMe.checked) {
+          window.StacklyCart.showToast("Please tick the \"Remember me\" checkbox to access the dashboard.", "exclamation-circle");
+          rememberMe.focus();
+          return;
+        }
+        if (rememberMe.checked) {
+          localStorage.setItem("stacklyRemember", loginEmailInput.value.trim());
+        } else {
+          localStorage.removeItem("stacklyRemember");
+        }
         const role = (document.querySelector('input[name="loginRole"]:checked') || {}).value || "";
         const dashboards = { user: "user-dashboard.html", admin: "admin-dashboard.html" };
         window.StacklyCart.showToast("Login successful! Welcome back" + (role ? " " + role.charAt(0).toUpperCase() + role.slice(1) : "") + ".", "circle-check");
@@ -295,15 +354,50 @@
 
       registerForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        if (!document.getElementById("termsCheck").checked) {
-          window.StacklyCart.showToast("Please accept the Terms & Privacy Policy to continue.", "exclamation-circle");
+
+        const regEmail = document.getElementById("regEmail");
+        const email = regEmail.value.trim().toLowerCase();
+
+        const emailRegex =
+          /^[A-Za-z0-9](?!.*\.\.)[A-Za-z0-9._%+-]*[A-Za-z0-9]@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z]{2,})+$/;
+
+        if (!emailRegex.test(email)) {
+          regEmail.setCustomValidity(
+            "Please enter a valid email address, e.g. john@gmail.com"
+          );
+          regEmail.reportValidity();
           return;
         }
-        if (!registerForm.checkValidity()) return registerForm.reportValidity();
-        const role = (document.querySelector('input[name="regRole"]:checked') || {}).value || "";
-        window.StacklyCart.showToast("Account created! Registered as " + role.charAt(0).toUpperCase() + role.slice(1) + ". Welcome to Stackly!", "user-plus");
+
+        regEmail.setCustomValidity("");
+
+        if (!document.getElementById("termsCheck").checked) {
+          window.StacklyCart.showToast(
+            "Please accept the Terms & Privacy Policy to continue.",
+            "exclamation-circle"
+          );
+          return;
+        }
+
+        if (!registerForm.checkValidity()) {
+          registerForm.reportValidity();
+          return;
+        }
+
+        const role =
+          (document.querySelector('input[name="regRole"]:checked') || {}).value || "";
+
+        window.StacklyCart.showToast(
+          "Account created! Registered as " +
+            role.charAt(0).toUpperCase() +
+            role.slice(1) +
+            ". Welcome to Stackly!",
+          "user-plus"
+        );
+
         registerForm.reset();
         switchTab("login");
+
         setTimeout(function () {
           window.location.href = "login.html";
         }, 1200);

@@ -25,15 +25,27 @@ function initMobileMenu() {
 
   if (!menuToggle || !mainNav) return;
 
+  function pauseSlider() {
+    const slider = document.querySelector(".hero-slider");
+    if (slider && slider.__sliderControls) slider.__sliderControls.stop();
+  }
+
+  function resumeSlider() {
+    const slider = document.querySelector(".hero-slider");
+    if (slider && slider.__sliderControls) slider.__sliderControls.start();
+  }
+
   menuToggle.addEventListener("click", () => {
     mainNav.classList.toggle("active");
     const icon = menuToggle.querySelector("i");
     if (mainNav.classList.contains("active")) {
       icon.classList.remove("fa-bars");
       icon.classList.add("fa-xmark");
+      pauseSlider();
     } else {
       icon.classList.remove("fa-xmark");
       icon.classList.add("fa-bars");
+      resumeSlider();
     }
   });
 
@@ -45,6 +57,7 @@ function initMobileMenu() {
         icon.classList.remove("fa-xmark");
         icon.classList.add("fa-bars");
       }
+      resumeSlider();
     });
   });
 }
@@ -251,7 +264,7 @@ window.StacklyUI = {
 };
 
 /* =========================================================
-   Hero slider (auto-slide)
+   Hero slider - RIGHT -> LEFT directional slide
 ========================================================= */
 
 function initHeroSlider() {
@@ -264,17 +277,43 @@ function initHeroSlider() {
 
   let current = 0;
   let timer = null;
-  const interval = 4000;
+  const interval = 3500;
 
-  function goTo(index) {
-    current = (index + slides.length) % slides.length;
-    slides.forEach((s, i) => s.classList.toggle("active", i === current));
-    dots.forEach((d, i) => d.classList.toggle("active", i === current));
+  function showSlide(next) {
+    if (next === current) return;
+
+    const oldSlide = slides[current];
+    const newSlide = slides[next];
+
+    /* Remove previous states */
+    slides.forEach((slide) => {
+      slide.classList.remove("active", "prev");
+    });
+
+    /* Old slide moves left */
+    oldSlide.classList.add("prev");
+
+    /* New slide comes from right */
+    newSlide.classList.add("active");
+
+    /* Update dots */
+    dots.forEach((dot) => {
+      dot.classList.remove("active");
+    });
+    if (dots[next]) {
+      dots[next].classList.add("active");
+    }
+
+    current = next;
+  }
+
+  function nextSlide() {
+    showSlide((current + 1) % slides.length);
   }
 
   function start() {
     stop();
-    timer = setInterval(() => goTo(current + 1), interval);
+    timer = setInterval(nextSlide, interval);
   }
 
   function stop() {
@@ -284,15 +323,28 @@ function initHeroSlider() {
     }
   }
 
-  dots.forEach((dot, i) => {
+  /* Dot click */
+  dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
-      goTo(i);
+      showSlide(index);
       start();
     });
   });
 
   slider.addEventListener("mouseenter", stop);
   slider.addEventListener("mouseleave", start);
+
+  /* Expose controls so the mobile menu can pause/resume the slider */
+  slider.__sliderControls = { start, stop };
+
+  /* Initial slide */
+  slides.forEach((slide) => {
+    slide.classList.remove("active", "prev");
+  });
+  slides[0].classList.add("active");
+  if (dots[0]) {
+    dots[0].classList.add("active");
+  }
 
   start();
 }
