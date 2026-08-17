@@ -258,10 +258,10 @@
         rememberMeBox.addEventListener("click", function (e) {
           e.stopPropagation();
           window.StacklyCart.showToast(
-            rememberMeBox.checked
+            !rememberMeBox.checked
               ? "Remember me enabled - your email will be saved on this device."
               : "Remember me disabled.",
-            rememberMeBox.checked ? "check-circle" : "times-circle"
+            !rememberMeBox.checked ? "check-circle" : "times-circle"
           );
         });
       }
@@ -271,7 +271,8 @@
           if (!input) return;
           const show = input.type === "password";
           input.type = show ? "text" : "password";
-          this.querySelector("i").className = show ? "far fa-eye-slash" : "far fa-eye";
+          const icon = this.querySelector("i");
+          if (icon) icon.className = show ? "far fa-eye-slash" : "far fa-eye";
           this.setAttribute("aria-label", show ? "Hide password" : "Show password");
         });
       });
@@ -334,19 +335,14 @@
         footer.innerHTML = isLogin
           ? `New to Stackly? <a href="#" data-auth="register">Create an account</a>`
           : `Already have an account? <a href="#" data-auth="login">Login here</a>`;
-        document.querySelectorAll("[data-auth]").forEach((t) => {
-          t.addEventListener("click", (e) => {
-            e.preventDefault();
-            switchTab(t.dataset.auth);
-          });
-        });
       }
 
-      document.querySelectorAll("[data-auth]").forEach((t) => {
-        t.addEventListener("click", (e) => {
+      document.addEventListener("click", (e) => {
+        const t = e.target.closest("[data-auth]");
+        if (t) {
           e.preventDefault();
           switchTab(t.dataset.auth);
-        });
+        }
       });
 
       loginForm.addEventListener("submit", (e) => {
@@ -361,7 +357,7 @@
         const rememberMe = document.getElementById("rememberMe");
         if (!rememberMe || !rememberMe.checked) {
           window.StacklyCart.showToast("Please tick the \"Remember me\" checkbox to access the dashboard.", "exclamation-circle");
-          rememberMe.focus();
+          if (rememberMe) rememberMe.focus();
           return;
         }
         if (rememberMe.checked) {
@@ -410,7 +406,8 @@
         }
         if (regConfirmInput) regConfirmInput.setCustomValidity("");
 
-        if (!document.getElementById("termsCheck").checked) {
+        const termsCheck = document.getElementById("termsCheck");
+        if (!termsCheck || !termsCheck.checked) {
           window.StacklyCart.showToast(
             "Please accept the Terms & Privacy Policy to continue.",
             "exclamation-circle"
