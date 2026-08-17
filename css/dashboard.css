@@ -6,7 +6,7 @@
 
 /* style.css adds padding-top:159px for the fixed site header —
    dashboards have no fixed header, so reset it. overflow-x: clip
-   keeps sticky working (overflow-x: hidden on body breaks it) */
+   overrides any body overflow from style.css to keep sticky working */
 body {
   padding-top: 0;
   overflow-x: clip;

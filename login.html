@@ -229,6 +229,14 @@
   <script src="js/cart.js"></script>
   <script src="js/script.js"></script>
   <script>
+    /* Prevent console error if cart.js is unavailable */
+    window.StacklyCart = window.StacklyCart || {
+      showToast: function (message, icon) {
+        console.log(message);
+      }
+    };
+  </script>
+  <script>
     document.addEventListener("DOMContentLoaded", function () {
       const loginForm = document.getElementById("loginForm");
       const registerForm = document.getElementById("registerForm");
