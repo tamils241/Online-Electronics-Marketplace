@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="css/responsive.css">
   <style>
     body { padding-top: 0; }
-    .auth-side-img { transition: opacity 0.8s ease; }
     .back-home-btn {
       background: transparent;
       color: var(--dark, #111);
@@ -116,12 +115,12 @@
           <p>Login to your Stackly account.</p>
           <div class="form-group">
             <label for="loginEmail">Email Address</label>
-            <input type="email" id="loginEmail" placeholder="you@example.com" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address, e.g. you@example.com">
+            <input type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="username" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address, e.g. you@example.com">
           </div>
           <div class="form-group">
             <label for="loginPass">Password</label>
             <div class="pw-field">
-              <input type="password" id="loginPass" placeholder="Enter your password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" title="Must be 8+ characters with uppercase, lowercase, a number and a special character">
+              <input type="password" id="loginPass" placeholder="Enter your password" required autocomplete="current-password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" title="Must be 8+ characters with uppercase, lowercase, a number and a special character">
               <button type="button" class="pw-toggle" data-target="loginPass" aria-label="Show password"><i class="far fa-eye"></i></button>
             </div>
           </div>
@@ -152,11 +151,11 @@
           <div class="form-row">
             <div class="form-group">
               <label for="regFirst">First Name</label>
-              <input type="text" id="regFirst" placeholder="John" required maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters, no numbers" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
+              <input type="text" id="regFirst" placeholder="John" required autocomplete="given-name" maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters, no numbers" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
             </div>
             <div class="form-group">
               <label for="regLast">Last Name</label>
-              <input type="text" id="regLast" placeholder="Doe" required maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters, no numbers" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
+              <input type="text" id="regLast" placeholder="Doe" required autocomplete="family-name" maxlength="16" pattern="[A-Za-z][A-Za-z ]*" title="Only letters, no numbers" oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'').slice(0,16)">
             </div>
           </div>
           <div class="form-group">
@@ -174,7 +173,7 @@
           </div>
           <div class="form-group">
             <label for="regPhone">Phone Number</label>
-            <input type="tel" id="regPhone" placeholder="+91 98765 43210" required pattern="[0-9]{10}" minlength="10" maxlength="10" title="Enter a 10-digit phone number" oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)">
+            <input type="tel" id="regPhone" placeholder="+91 98765 43210" required autocomplete="tel" pattern="[0-9]{10}" minlength="10" maxlength="10" title="Enter a 10-digit phone number" oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)">
           </div>
           <div class="form-group">
             <label>Account Type</label>
@@ -192,7 +191,7 @@
           <div class="form-group">
             <label for="regPass">Password</label>
             <div class="pw-field">
-              <input type="password" id="regPass" placeholder="8+ chars, uppercase, lowercase, number, symbol" minlength="8" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" title="Must be 8+ characters with uppercase, lowercase, a number and a special character">
+              <input type="password" id="regPass" placeholder="8+ chars, uppercase, lowercase, number, symbol" minlength="8" required autocomplete="new-password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" title="Must be 8+ characters with uppercase, lowercase, a number and a special character">
               <button type="button" class="pw-toggle" data-target="regPass" aria-label="Show password"><i class="far fa-eye"></i></button>
             </div>
             <div class="pw-meter" id="pwMeter"><span></span><span></span><span></span><span></span><small>Use 8+ characters with upper &amp; lower case, a number and a symbol.</small></div>
@@ -200,7 +199,7 @@
           <div class="form-group">
             <label for="regConfirmPass">Confirm Password</label>
             <div class="pw-field">
-              <input type="password" id="regConfirmPass" placeholder="Re-enter your password" required>
+              <input type="password" id="regConfirmPass" placeholder="Re-enter your password" required autocomplete="new-password">
               <button type="button" class="pw-toggle" data-target="regConfirmPass" aria-label="Show password"><i class="far fa-eye"></i></button>
             </div>
             <small id="confirmError" style="display:none; color:#d33; font-size:12px; margin-top:6px;">Passwords do not match.</small>
@@ -225,19 +224,19 @@
     </div>
   </section>
 
-  <script src="js/products.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/script.js"></script>
-  <script>
-    /* Prevent console error if cart.js is unavailable */
-    window.StacklyCart = window.StacklyCart || {
-      showToast: function (message, icon) {
-        console.log(message);
-      }
-    };
-  </script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      function showToast(message) {
+        var existing = document.querySelector(".login-toast");
+        if (existing) existing.remove();
+        var t = document.createElement("div");
+        t.className = "login-toast";
+        t.textContent = message;
+        t.style.cssText = "position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:12px 22px;border-radius:10px;font-size:14px;z-index:9999;opacity:0;transition:opacity .3s;max-width:90%;text-align:center;";
+        document.body.appendChild(t);
+        requestAnimationFrame(function () { t.style.opacity = "1"; });
+        setTimeout(function () { t.style.opacity = "0"; setTimeout(function () { t.remove(); }, 300); }, 2500);
+      }
       const loginForm = document.getElementById("loginForm");
       const registerForm = document.getElementById("registerForm");
 
@@ -256,20 +255,18 @@
         rememberLabel.addEventListener("click", function (e) {
           e.preventDefault();
           rememberMeBox.checked = !rememberMeBox.checked;
-          window.StacklyCart.showToast(
+          showToast(
             rememberMeBox.checked
-              ? "Remember me enabled - your email will be saved on this device."
-              : "Remember me disabled.",
-            rememberMeBox.checked ? "check-circle" : "times-circle"
+              ? "Remember me enabled."
+              : "Remember me disabled."
           );
         });
         rememberMeBox.addEventListener("click", function (e) {
           e.stopPropagation();
-          window.StacklyCart.showToast(
+          showToast(
             !rememberMeBox.checked
-              ? "Remember me enabled - your email will be saved on this device."
-              : "Remember me disabled.",
-            !rememberMeBox.checked ? "check-circle" : "times-circle"
+              ? "Remember me enabled."
+              : "Remember me disabled."
           );
         });
       }
@@ -364,7 +361,7 @@
         if (!loginForm.checkValidity()) return loginForm.reportValidity();
         const rememberMe = document.getElementById("rememberMe");
         if (!rememberMe || !rememberMe.checked) {
-          window.StacklyCart.showToast("Please tick the \"Remember me\" checkbox to access the dashboard.", "exclamation-circle");
+          showToast("Please tick the \"Remember me\" checkbox to access the dashboard.");
           if (rememberMe) rememberMe.focus();
           return;
         }
@@ -375,7 +372,7 @@
         }
         const role = (document.querySelector('input[name="loginRole"]:checked') || {}).value || "";
         const dashboards = { user: "user-dashboard.html", admin: "admin-dashboard.html" };
-        window.StacklyCart.showToast("Login successful! Welcome back" + (role ? " " + role.charAt(0).toUpperCase() + role.slice(1) : "") + ".", "circle-check");
+        showToast("Login successful! Welcome back" + (role ? " " + role.charAt(0).toUpperCase() + role.slice(1) : "") + ".");
         setTimeout(function () {
           window.location.href = dashboards[role] || "index.html";
         }, 1200);
@@ -416,9 +413,8 @@
 
         const termsCheck = document.getElementById("termsCheck");
         if (!termsCheck || !termsCheck.checked) {
-          window.StacklyCart.showToast(
-            "Please accept the Terms & Privacy Policy to continue.",
-            "exclamation-circle"
+          showToast(
+            "Please accept the Terms & Privacy Policy to continue."
           );
           return;
         }
@@ -431,34 +427,26 @@
         const role =
           (document.querySelector('input[name="regRole"]:checked') || {}).value || "";
 
-        window.StacklyCart.showToast(
+        showToast(
           "Account created! Registered as " +
             role.charAt(0).toUpperCase() +
             role.slice(1) +
-            ". Welcome to Stackly!",
-          "user-plus"
+            ". Welcome to Stackly!"
         );
 
         registerForm.reset();
         switchTab("login");
 
         setTimeout(function () {
-          window.location.href = "login.html";
+          window.location.href = "index.html";
         }, 1200);
       });
 
-      const sideImages = ["images/hero/hero-device.webp", "images/hero/hero-device-2.webp", "images/hero/hero-device-3.webp"];
-      const sideImg = document.querySelector(".auth-side-img");
+      var sideImg = document.querySelector(".auth-side-img");
       if (sideImg) {
-        let idx = 0;
-        setInterval(function () {
-          idx = (idx + 1) % sideImages.length;
-          sideImg.style.opacity = "0";
-          setTimeout(function () {
-            sideImg.src = sideImages[idx];
-            sideImg.style.opacity = "1";
-          }, 800);
-        }, 3500);
+        sideImg.addEventListener("error", function () {
+          this.src = "images/logo/logo.webp";
+        });
       }
     });
   </script>
